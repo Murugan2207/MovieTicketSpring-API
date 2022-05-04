@@ -16,8 +16,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Entity(name="movies_list")
-public class MoviesList {
+@Entity(name="movies")
+public class Movies {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="movie_id",nullable=false)

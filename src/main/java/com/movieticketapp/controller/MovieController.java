@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.movieticketapp.model.MoviesList;
+import com.movieticketapp.model.Movies;
 
 import com.movieticketapp.repository.MovieRepository;
 
@@ -20,22 +20,22 @@ public class MovieController {
 	MovieRepository movieRepository;
 
 	@PostMapping("movies/save") // register
-	public MoviesList save(@RequestBody MoviesList moviesList) {
+	public Movies save(@RequestBody Movies moviesList) {
 		movieRepository.save(moviesList);
 		return moviesList;
 	}
 
 	@GetMapping("movies/list")
-	public List<MoviesList> findAll() {
-		List<MoviesList> movieslist = movieRepository.findAll();
+	public List<Movies> findAll() {
+		List<Movies> movieslist = movieRepository.findAll();
 		return movieslist;
 	}
 
 	@GetMapping("movies/findById/{movie_id}")
-	public MoviesList findById(@PathVariable("movie_id") Integer movie_id) {
-		Optional<MoviesList> moviesList = movieRepository.findById(movie_id);
+	public Movies findById(@PathVariable("movie_id") Integer movie_id) {
+		Optional<Movies> moviesList = movieRepository.findById(movie_id);
 		if (moviesList.isPresent()) {
-			MoviesList movieObj = moviesList.get();
+			Movies movieObj = moviesList.get();
 			return movieObj;
 		} else {
 			return null;
@@ -44,31 +44,32 @@ public class MovieController {
 	}
 
 	@GetMapping("movies/findBycategory/{category}")
-	public List<MoviesList> findByCategory(@PathVariable("category") String category) {
-		List<MoviesList> moviesList = movieRepository.findByCategory(category);
+	public List<Movies> findByCategory(@PathVariable("category") String category) {
+		List<Movies> moviesList = movieRepository.findByCategory(category);
 		return moviesList;
 
 	}
 
 	@GetMapping("movies/findByLanguage/{language}")
-	public List<MoviesList> findByLanguages(@PathVariable("language") String language) {
-		List<MoviesList> moviesList = movieRepository.findByLanguage(language);
+	public List<Movies> findByLanguages(@PathVariable("language") String language) {
+		List<Movies> moviesList = movieRepository.findByLanguage(language);
 		return moviesList;
 	}
+
 	@GetMapping("movies/findByMovieName/{movie_name}")
-	public MoviesList findByMovieName(@PathVariable("movie_name") String movie_name) {
-		Optional<MoviesList> moviesList = movieRepository.findByMovieName(movie_name);
+	public Movies findByMovieName(@PathVariable("movie_name") String movie_name) {
+		Optional<Movies> moviesList = movieRepository.findByMovieName(movie_name);
 		if (moviesList.isPresent()) {
-			MoviesList movieObj = moviesList.get();
+			Movies movieObj = moviesList.get();
 			return movieObj;
 		} else {
 			return null;
 		}
 	}
-		@GetMapping("movies/findByRatings/{ratings}")
-		public List<MoviesList> findByRatings(@PathVariable("ratings") Integer ratings) {
-			List<MoviesList> moviesList = movieRepository.findByRatings(ratings);
-			return moviesList;
-		}
-}
 
+	@GetMapping("movies/findByRatings/{ratings}")
+	public List<Movies> findByRatings(@PathVariable("ratings") Integer ratings) {
+		List<Movies> moviesList = movieRepository.findByRatings(ratings);
+		return moviesList;
+	}
+}

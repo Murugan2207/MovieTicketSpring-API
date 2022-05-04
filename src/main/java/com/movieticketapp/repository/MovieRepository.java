@@ -5,16 +5,17 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.movieticketapp.model.MoviesList;
+import com.movieticketapp.model.Movies;
 
-public interface MovieRepository extends JpaRepository<MoviesList, Integer> {
 
-	List<MoviesList> findByCategory(String category);
+public interface MovieRepository extends JpaRepository<Movies, Integer> {
 
-	List<MoviesList> findByLanguage(String language);
+	List<Movies> findByCategory(String category);
 
-	Optional<MoviesList> findByMovieName(String movie_name);
+	List<Movies> findByLanguage(String language);
 
-	List<MoviesList> findByRatings(Integer ratings);
+	Optional<Movies> findByMovieName(String movie_name);
+
+	List<Movies> findByRatings(Integer ratings);
 
 }

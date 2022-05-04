@@ -29,6 +29,6 @@ public class User {
 	@Column(name="password",nullable=false)
 	private String password;
 	@Column(name="phone_no",nullable=false)
-	private String phone_no;
+	private String phoneNo;
 
 }
