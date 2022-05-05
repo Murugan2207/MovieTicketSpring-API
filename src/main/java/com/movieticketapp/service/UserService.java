@@ -3,9 +3,11 @@ package com.movieticketapp.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.movieticketapp.exception.ServiceException;
+import com.movieticketapp.exception.ValidationException;
 import com.movieticketapp.model.User;
 import com.movieticketapp.repository.UserRepository;
 import com.movieticketapp.validation.UserValidator;
@@ -17,16 +19,16 @@ public class UserService {
 
 	UserRepository userRepository;
 
-	public void save(User user) throws Exception {
+	public void save(User user) throws ServiceException,ValidationException {
 
 		try {
 			UserValidator.validateRegister(user);
 			userRepository.save(user);
 			System.out.println("Successfully Registered");
-		} catch (Exception e) {
+		} catch (DataAccessException e) {
 
 			e.printStackTrace();
-			throw e;
+			throw new ServiceException (e.getMessage());
 		}
 
 	}
@@ -39,13 +41,13 @@ public class UserService {
 			if (userLogin.isPresent()) {
 				return userLogin.get();
 			} else {
-				throw new Exception("Invalid login credential");
+				throw new ServiceException("Invalid login credential");
 			}
 
-		} catch (Exception e) {
+		} catch (DataAccessException e) {
 			e.printStackTrace();
-			throw e;
-		}
+			throw new ServiceException (e.getMessage());
+			}
 
 	}
 }
