@@ -25,7 +25,7 @@ public class Movies {
 	@Column(name="movie_name",nullable=false )
 	private  String movieName;
 	@Column(name="ticket_price",nullable=false)
-	private  Integer ticket_price;
+	private  Integer ticketPrice;
 	@Column(name="ratings",nullable=false)
 	private  Integer ratings;
 	@Column(name="language",nullable=false)

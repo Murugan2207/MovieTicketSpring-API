@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,5 +73,15 @@ public class MovieController {
 	public List<Movies> findByRatings(@PathVariable("ratings") Integer ratings) {
 		List<Movies> moviesList = movieRepository.findByRatings(ratings);
 		return moviesList;
+	}
+	@DeleteMapping("movies/delete/{movie_id}")
+	public void delete(@PathVariable("movie_id") Integer movie_id) {
+		movieRepository.deleteById(movie_id);
+	}
+	@PutMapping("movies/update/{movie_id}")
+	public void update(@PathVariable("movie_id") Integer id, @RequestBody Movies movies) {
+		System.out.println("Successfully updated");
+		movies.setId(id);
+		movieRepository.save(movies);
 	}
 }
