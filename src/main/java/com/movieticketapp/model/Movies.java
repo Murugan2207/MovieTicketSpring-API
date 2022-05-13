@@ -34,4 +34,6 @@ public class Movies {
 	private String location;
 	@Column(name="category",nullable=false)
 	private String category;
+	@Column(name="image",nullable=false)
+	private String image;
 }
