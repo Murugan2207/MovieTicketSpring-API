@@ -24,7 +24,7 @@ public class BookingController {
 	@GetMapping("booking/save") // register
 	public String save(@RequestParam("userId") Integer userId, @RequestParam("movieId") Integer movieId,
 			@RequestParam("noOfTickets") Integer noOfTickets, @RequestParam("totalAmount") Integer totalAmount,
-			@RequestParam("status") String status, @RequestParam("showDate") String showDate) {
+			 @RequestParam("showDate") String showDate) {
 		Booking booking = new Booking();
 		LocalDate date = LocalDate.now();
 		LocalDate date1 = LocalDate.parse(showDate);
@@ -32,7 +32,6 @@ public class BookingController {
 		booking.setMovieId(movieId);
 		booking.setNoOfTickets(noOfTickets);
 		booking.setTotalAmount(totalAmount);
-		booking.setStatus(status);
 		booking.setShowDate(date1);
 		booking.setBookingDate(date);
 		String result = null;
