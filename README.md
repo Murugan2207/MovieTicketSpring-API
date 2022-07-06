@@ -5,7 +5,7 @@
    
    #### Technologies Used ####
    
-   * JAVA
+   * Java 17
    * Maven
    * MySQL
    * Git
@@ -14,6 +14,7 @@
   * users are able to search different genres of Movies.
   * Users can able to View the Movie Details
   * Admin can able to add,delete and edit the movie details.
+  * Users can able to Search the movies according to languages,Rating,and location
   
   #### To-do list:
   * Users will able to select seats.
