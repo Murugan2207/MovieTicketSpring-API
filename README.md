@@ -6,8 +6,9 @@
    #### Technologies Used ####
    
    * JAVA
+   * Maven
    * MySQL
-   * JDBC
+   * Git
    
   #### Features
   * users are able to search different genres of Movies.
